@@ -1,4 +1,4 @@
-name: harness-webapp-demo-<+pipeline.variables.githublogin>
+name: harness-webapp-demo
 replicas: 1
 # github_login: <+pipeline.variables.githublogin>
 image: <+artifact.image>
