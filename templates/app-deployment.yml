@@ -59,13 +59,13 @@ spec:
       imagePullSecrets:
       - name: {{.Values.name}}-dockercfg
       {{- end}}
-      volumes:
-        - name: service-accounts
-          secret:
-            secretName: {{.Values.name}}-secret
-            items:
-            - key: gcp-firestore-service-account
-              path: service-account-file.json
+#      volumes:
+#        - name: service-accounts
+#          secret:
+#            secretName: {{.Values.name}}-secret
+#            items:
+#            - key: gcp-firestore-service-account
+#              path: service-account-file.json
       #- name: volume
       #  persistentVolumeClaim:
       #    claimName: {{.Values.volumeClaim}}-{{.Values.name}}
@@ -93,9 +93,9 @@ spec:
           preStop:
             exec:
               command: ["fusermount", "-u", "/data-ext"]
-        volumeMounts:
-        - name: service-accounts
-          mountPath: /opt/safile
+#        volumeMounts:
+#        - name: service-accounts
+#          mountPath: /opt/safile
         #volumeMounts:
         #- mountPath: /data-ext
         #  name: volume
