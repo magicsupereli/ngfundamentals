@@ -1,36 +1,13 @@
 name: harness-webapp-demo
 replicas: 1
-# github_login: <+pipeline.variables.githublogin>
 image: <+artifact.image>
-#dockercfg: ${artifact.source.dockerconfig}
 dockercfg: <+artifact.imagePullSecret>
 
 createNamespace: true
 namespace: <+infra.namespace>
-
-# externalDnsName: <+pipeline.variables.externalDnsName>
-
-# Service Type allow you to specify what kind of service you want.
-# Possible values for ServiceType are:
-# ClusterIP | NodePort | LoadBalancer | ExternalName
 serviceType: ClusterIP
-
-# A Service can map an incoming port to any targetPort.
-# targetPort is where application is listening on inside the container.
 servicePort: 8000
 serviceTargetPort: 8000
-# staticIp: "harness-platform-demo-ip"
-# volumeClaim: "harness-platform-demo-pvc"
-
-# Specify all environment variables to be added to the container.
-# The following two maps, config and secrets, are put into a ConfigMap
-# and a Secret, respectively.
-# Both are added to the container environment in podSpec as envFrom source.
 env:
-#  config:
-#    DB: ""
-#    GITHUB_LOGIN: <+pipeline.variables.githublogin>
-#    GOOGLE_APPLICATION_CREDENTIALS: "/opt/safile/service-account-file.json"
-#    GOOGLE_CLOUD_PROJECT: <+pipeline.variables.GCPProject>
-  secrets:
+ secrets:
     key2: value2
